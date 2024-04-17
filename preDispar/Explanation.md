@@ -1,4 +1,7 @@
-Here is explained all data preprocessing for the disPar/dirSFH pipeline.
+Here, all data preprocessing for the disPar/dirSFH pipeline is explained.
+An extinction, absolute magnitude and color is assigned with AG_generation. 
+After that, two datasets are generated with QSHAG_selection
+
 ## Full
 A subset of data feeded to disPar with:
 - A filter on absolute magnitude MG < 5.5.
