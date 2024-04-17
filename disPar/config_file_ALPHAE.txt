@@ -1,0 +1,74 @@
+[new_dispar_v9.7]
+
+# Name to identify the sample we are studying:
+obs_sample = GE_SFH
+
+# Observed file (no CUTS!, including path unless it is located in the directory where we are running the code).
+FILE_OBS = GE_full.hdf5
+
+# Path to store the files that the code is to create (ending in '/'). If it does not exist, the code will create it.
+path_outputs = GE_results/
+
+# Path indicating where the mother is located (ending in '/').
+path_mother = /net/nas/proyectos/nm/carme/jd/synthetic_cmds/
+
+# Name of the mother CMD to disperse (format to be specified in the next keyword). Avoid the format suffix ('.hdf5', '.fits')
+name_mother = EDR3_q01_b03_101M_basti_iacAE_kroupa_MG5
+mother_format = .hdf5
+
+# Mass of the mother CMD to disperse (to store this information).
+Mot_Mass = 1473155993.88
+
+# Approximate maximum number of stars to run the mother CMD (recommended, around 20 million)
+N_max_mothers = 18000000.0
+
+# Nbins for global distribution simulation.
+Nbins = 250
+
+# For the star by star search. Number of neighbours to consider and maximum radius (in mag)
+N_neigh = 10
+max_dist = 0.05
+
+# Extinction map to be used (l18, bayestar, l22)
+dust_map = bayestar
+
+# Extinction recipe to be used (cas18, bab18, f19)
+ext_rec = f19
+
+# Completeness simulation
+# parallax_over_error cut
+poe_cut = 5.0
+
+# AG cut
+AG_cut = 0.5
+
+# max_samples_bayestar (This is meant for testing bayestar and computation of error in AG, EBPRP)
+max_samples_bayestar = 5
+
+# Is the sample drawn from the RVS sample? 1- Yes, 0- No
+rvs = 1
+
+# If rvs = 1, then here we select which mask we use for dealing with RVS completeness
+mask_file_6d = complete_6D_mask.fits
+
+# radial_velocity_error cut (not used if rvs is set to zero, but it needs to appear (a number)) stars with error above this are removed
+rve_cut = 20.0
+
+# Do you want to plot the distribution simulation? 0 - NO, 1 - YES. Recommended 0 - NO.
+plot_distr = 0
+
+# Do you want to plot the completeness simulation? 0 - NO, 1 - YES. Recommended 1 - YES.
+plot_completeness = 1
+
+# Do you want to show (on screen) the plots you are generating?  0 - NO, 1 - YES. Recommended 0 - NO.
+show = 0
+
+# Keep simulated file? Including all original columns plus those from the global distribution simulation. 0 - NO, 1 - YES
+keep_simu = 0
+
+# Keep simulated_completeness file? Including all original columns plus those from the global distribution simulation AND those for the completeness. 0 - NO, 1 - YES
+keep_simu_comp = 0
+
+# Keep short dispersed file? Including only this coloums: [disp_MG, disp_bp_rp, Age, Metal] 0 - NO, 1 - YES
+keep_short_disp = 1
+                                                                                                                                        
