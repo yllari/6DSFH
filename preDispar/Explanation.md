@@ -1,7 +1,8 @@
 Here is explained all data preprocessing for the disPar/dirSFH pipeline.
 ## Full
-A subset of data feeded to disPar with JUST a filter on absolute magnitude MG < 5.5.
-Distance cut for quality purposes '1/new_parallax' < 1.2 (kpc)
+A subset of data feeded to disPar with:
+- A filter on absolute magnitude MG < 5.5.
+- Distance cut for quality purposes '1/new_parallax' < 1.2 (kpc)
 
 ## QSHAG
 A subset of data feeded to dirSFH with the following cuts:
