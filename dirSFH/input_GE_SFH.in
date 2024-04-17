@@ -73,6 +73,7 @@ flatness = "Z"
 
 ## Force color-magnitude shifts 
 # Comment to use automatic definition (must run getSM.R) 
+# Uncommenting this avoids the necessity of running getSM.R
 dcm = c(-0.035,0.040)
 
 ## BaSTI_IAC Z<->FeH transformation params 
