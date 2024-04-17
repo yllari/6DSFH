@@ -7,7 +7,9 @@ Distance cut for quality purposes '1/new_parallax' < 1.2 (kpc)
 A subset of data feeded to dirSFH with the following cuts:
 - Same brigthness cut as Full 'MG' <5.5
 - Distance cut for quality purposes '1/new_parallax' < 1.2 (kpc)
+  
 Additionally
+
 - Error in velocity cut 'radial_velocity_error' < 20 km/s
 - Error in parallax 'parallax_over_error' > 5
 - Cut in extinction 'AG' < 0.5
