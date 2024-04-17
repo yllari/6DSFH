@@ -1,0 +1,12 @@
+All information from the original data:
+From Emma's email
+
+Label = [-1,0,1,2,3,4,5,6,11,15,17,23,24 26,28] 
+
+Name = ['Not Assigned','Gaia Enceladus', 'L-RL3', 'Hot Thick Disk', 'Thamnos 1+2', Helmi Streams', 'Sequoia', 'ED-1', 'L-RL64', 'ED-2', 'ED-4', 'ED-3', 'Typhon', 'ED-5', ED-6'] 
+
+It is a 6D halo sample within 2.5 kpc, no quality cuts. It is simply Gaia RVS sample, with distance within 2.5 kpc and with a vtoomre>210 km/s (i.e. halo). 
+Most stars actually have poege5 (~82,000 out of total 84,000). I didn't make any cuts on radial velocity error and also don't make any other cuts e.g on magnitude so you can make your own choices. 
+
+There is a column called "derived_labels_group" which assigns the stars in this sample to the different substructures according to the clustering on the RVS halo sample within 2.5kpc (i.e. the same sample but with quality cuts), 
+this is the same as the one in the DR3 clustering paper. I assign stars in our sample to the clustering groups using the Mahalanobis distance of ~80% as we did previously, D = 2.13.
