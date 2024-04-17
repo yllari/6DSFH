@@ -38,6 +38,7 @@ class PreDisPar():
         poege = '(parallax_over_error > 5.0)'
         quality =  '(0.001+0.039*(bp_rp) < log10(phot_bp_rp_excess_factor)) & (log10(phot_bp_rp_excess_factor) < 0.12 + 0.039*(bp_rp))'
         dist = '1/new_parallax < 1.2'
+        vel_cut = 'radial_velocity_error < 20'
 
         df = self.data.filter(bright).extract()
         # Separating just for the sake of maintaining
@@ -46,7 +47,8 @@ class PreDisPar():
         df.select(poege, name="poege")
         df.select(quality, name="quality")
         df.select(dist, name="dist")
-        return df.filter('(ext)&(poege)&(quality)&(dist)').extract()
+        df.select(vel_cut, name="vel_cut")
+        return df.filter('(ext)&(poege)&(quality)&(dist)&(vel_cut)').extract()
     def print_data(self):
         print(self.data)
         return None
