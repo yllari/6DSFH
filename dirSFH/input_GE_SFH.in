@@ -1,0 +1,86 @@
+## INPUT files for (obs)erved CMD, (mother) diagram and (root) tag 
+obs        = 'GE_qshag.hdf5'
+mother     = '../disPar/GEs/GE_results/GE_SFH_EDR3_q01_b03_101M_basti_iacAE_kroupa_MG5_dispersed_short.hdf5'
+root       = 'GE_SFH'
+outpath    = 'GE_results'
+
+## Intermediate files 
+# For diosa (and other /net addresses), use of absolute pathing is NOT recommended. 
+
+#All the variables in this block define files that will be created and needed in different steps of  
+#the procedure. If the lines are #commented, the files will be created with a default name  
+#(e.g. obs_root.rds), using the root above. If uncommented,they will be created with the  
+#given name if they do not exist, or if they exist, that file will be used. 
+# Mother RDS 
+mother_out = 'GE_RDS/mother.rds'
+# Observed RDS 
+obs_out    = 'GE_RDS/obs_out.rds'
+# Bundle-window RDS 
+win_out    = 'GE_RDS/win_out.rds'
+# CMD matrix RDS 
+mat_out    = 'GE_RDS/mat_out.rds'
+# CMD weights RDS 
+wei_out    = 'GE_RDS/wei_out.rds'
+# Color-magnitude shifts RDS 
+SM_out     = 'GE_RDS/SM_out.rds'
+
+## Number of cores to use! 
+
+# Calculation cores (try them out! For diosa ~50 seems to work fine-ish) 
+NCORES = 12
+# Binning cores per child (usually 1, but NCORES*CCORES must be less than available cores), 
+CCORES = 1
+OCORES = 1
+
+## Custom (classic) age-metallicity bin definition
+#Bins edad 'Fco_Emma'
+ages=c(0.02, 0.06, 0.126, 0.192, 0.262, 0.334, 0.404, 0.469, 0.532,
+0.596, 0.656, 0.718, 0.784, 0.857, 0.938, 1.028, 1.128, 1.
+244, 1.391, 1.576, 1.81, 2.066, 2.337, 2.609, 2.882, 3.156, 3.427,
+3.695, 3.978, 4.272, 4.581, 4.946, 5.389, 5.858, 6.351, 6.8
+61, 7.372, 7.883, 8.393, 8.904, 9.415, 9.925, 10.436, 10.947, 11.457,
+11.968, 12.479, 12.989, 13.5)
+#estos bins de metalicidad son de 0.1 dex en todo el rango PARA ALPHA ENHANCED
+mets=c(0.0001, 1.25304386e-04, 1.57008807e-04, 1.96730214e-04,
+2.46493073e-04, 3.08831503e-04, 3.86916679e-04, 4.84715581e-04,
+ 6.07188498e-04, 7.60534298e-04, 9.52494294e-04, 1.19272758e-03,
+1.49327293e-03, 1.86911431e-03, 2.33886924e-03, 2.92561957e-0
+3, 3.65790380e-03, 4.57088574e-03, 5.70770503e-03, 7.12099690e-03,
+8.87453874e-03, 1.10449317e-02, 1.37231532e-02, 1.70157124e
+-02, 2.10450039e-02, 2.59482909e-02, 3.2e-02)
+
+## Whether to recast bins by BINAMP-factor bins; it is recomended to leave dolog=TRUE for ages and dolog=FALSE for metallicities. 
+BINAMPAGE = 1.0
+BINAMPMET = 1.0
+#ages = recast(ages,n=length(ages)*BINAMPAGE,dolog=TRUE) 
+#mets = recast(mets,n=length(mets)*BINAMPMET,dolog=FALSE) 
+
+## Color and magnitude axes lengths of the ellipse for the initial CM-shifts 
+col_radius = 0.2
+mag_radius = 0.4
+
+## Number of evaluation points for CM-shifts mapping 
+# recommended some multiple of NCORES 
+neval = 2000
+
+## Number of iterations/zoom-ins for the CM-shifts mapping 
+# niter = 0 means just initial guess 
+niter = 3
+
+## Explicit flatness definition 
+# Either NULL for automatic, "Z" for flat in Z or "M" for logZ 
+flatness = "Z"
+
+## Force color-magnitude shifts 
+# Comment to use automatic definition (must run getSM.R) 
+dcm = c(-0.035,0.040)
+
+## BaSTI_IAC Z<->FeH transformation params 
+METAL_Y0 = 0.247
+METAL_dY = 1.31
+METAL_M0 = 1.67985
+ALPHA = 0.3016
+                                
+
+
+
