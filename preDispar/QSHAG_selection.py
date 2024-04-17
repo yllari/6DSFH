@@ -24,11 +24,7 @@ class PreDisPar():
         # -+-+-+-+-+- Filters -+-+-+-+-+-+-+-
         # General
         bright = 'MG<5.5'
-        dist = '1/new_parallax < 1.2'
-        df = self.data.filter(bright).extract()
-        df.select(dist, name="dist")
-
-        return df.filter('(dist)').extract()
+        return self.data.filter(bright).extract()
 
     def get_qshag(self):
         """Process data as QSHAG standard
