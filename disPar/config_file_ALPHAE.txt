@@ -69,6 +69,9 @@ keep_simu = 0
 # Keep simulated_completeness file? Including all original columns plus those from the global distribution simulation AND those for the completeness. 0 - NO, 1 - YES
 keep_simu_comp = 0
 
+# Keep full dispersed file? Including all columns. 0 - NO, 1 - YES
+keep_full_disp = 1
+
 # Keep short dispersed file? Including only this coloums: [disp_MG, disp_bp_rp, Age, Metal] 0 - NO, 1 - YES
 keep_short_disp = 1
                                                                                                                                         
