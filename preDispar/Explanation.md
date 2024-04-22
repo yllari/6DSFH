@@ -14,7 +14,7 @@ A subset of data feeded to dirSFH with the following cuts:
   
 Additionally
 
-- Error in velocity cut 'radial_velocity_error' < 20 km/s (to be selected as criteria)
+- Error in velocity cut 'radial_velocity_error' < 20 km/s (to be selected as criteria. Must be consistent with disPar)
 - Error in parallax 'parallax_over_error' > 5
 - Cut in extinction 'AG' < 0.5
 - Cut in excess color for quality purposes
