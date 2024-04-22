@@ -100,7 +100,7 @@ if __name__ == "__main__":
     sel_dc = {
         "group": "derived_labels_group",
         "cluster": "labels_substructure",
-        "original": "dendo_group"
+        "original": "dendo_groups"
     }
 
     parser = argparse.ArgumentParser(
@@ -123,7 +123,6 @@ if __name__ == "__main__":
     # -+-+-+-+-+-+-+-+-+-+-+- Main code +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-ºVy
 
     in_file = args.in_file
-    print(in_file)
     selection = args.selection
     selection_type = args.selection_type
 
