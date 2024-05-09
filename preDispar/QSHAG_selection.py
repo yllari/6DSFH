@@ -58,7 +58,7 @@ class PreDisPar():
         df.select(quality, name="quality")
         df.select(dist, name="dist")
         df.select(vel_cut, name="vel_cut")
-        return df.filter('(ext)&(poege)&(quality)&(dist)&(vel_cut)').extract()
+        return df.filter('(ext)&(poege)&(quality)&(dist)&(vel_cut)').extract()['COL_bp_rp','MG']
 
 
     def print_data(self):
@@ -140,5 +140,5 @@ if __name__ == "__main__":
     print("number of stars, Full:", out_full.count())
     print("number of stars, QSHAG:", out_qshag.count())
     print("number of stars, bundle:", out_qshag[out_qshag['MG']<4].count())
-    #out_full.export_hdf5(f'{selection}_{selection_type}_full.hdf5', progress=True)
-    #out_qshag.export_hdf5(f'{selection}_{selection_type}_qshag.hdf5', progress=True)
+    out_full.export_hdf5(f'{selection}_{selection_type}_full.hdf5', progress=True)
+    out_qshag.export_hdf5(f'{selection}_{selection_type}_qshag.hdf5', progress=True)

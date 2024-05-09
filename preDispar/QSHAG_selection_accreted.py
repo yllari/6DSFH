@@ -16,7 +16,7 @@ class PreDisPar():
     def __init__(self, in_file, selection_type, columns=None):
         self.data = vaex.open(in_file)
         self.sel_structure = "Accreted"
-        # -1 is assigned to Smooth, 9999 is assigned to added stars without ruwe cut (just for original)
+        # -1 is assigned to Smooth, 999999 is assigned to added stars without ruwe cut (just for original)
         self.data = self.data[(self.data[selection_type] != -1) & (self.data[selection_type] <29)]
         self.sel_type = selection_type
 
@@ -59,7 +59,7 @@ class PreDisPar():
         df.select(quality, name="quality")
         df.select(dist, name="dist")
         df.select(vel_cut, name="vel_cut")
-        return df.filter('(ext)&(poege)&(quality)&(dist)&(vel_cut)').extract()
+        return df.filter('(ext)&(poege)&(quality)&(dist)&(vel_cut)').extract()['COL_bp_rp', 'MG']
 
 
     def print_data(self):
