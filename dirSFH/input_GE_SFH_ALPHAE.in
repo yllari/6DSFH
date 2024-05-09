@@ -80,7 +80,9 @@ dcm = c(-0.035,0.040)
 METAL_Y0 = 0.247
 METAL_dY = 1.31
 METAL_M0 = 1.67985
-ALPHA = 0.3016
+ALPHA = 0
+# ALPHA = 0 is a NEW recommendation, all metalliticies will be [M/H]
+#ALPHA = 0.3016
                                 
 
 
