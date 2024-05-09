@@ -7,7 +7,7 @@ class PreDisPar():
     """Data procesing class in preparation for disPar
 
     When instantiated, a file to read, structure,
-    type of selection and columns (optional) are given
+    type of selection and columns (optional) must be given
     """
     data = None
     sel_structure = None
@@ -52,12 +52,15 @@ class PreDisPar():
         df = self.data.filter(bright).extract()
         # Separating just for the sake of maintaining
         # self.data selections clean
+        # WARNING: original selection has an implicit ruwe<1.4 filter!!!
         df.select(extinction, name="ext")
         df.select(poege, name="poege")
         df.select(quality, name="quality")
         df.select(dist, name="dist")
         df.select(vel_cut, name="vel_cut")
         return df.filter('(ext)&(poege)&(quality)&(dist)&(vel_cut)').extract()
+
+
     def print_data(self):
         print(self.data)
         return None
@@ -79,7 +82,7 @@ if __name__ == "__main__":
         'ED2', 'ED4', 'ED3',
         'Typhon', 'ED5', 'ED6'
     ]
-    name_values = np.arange(-1,15)
+    name_values = [-1,0,1,2,3,4,5,6,11,15,17,23,24, 26,28]
     lb_dc = dict(zip(names, name_values))
     # Reduced dictionary with mapping of labels to names
     #    "Smooth": -1,
@@ -112,15 +115,15 @@ if __name__ == "__main__":
     parser.add_argument('in_file',
             help="File path to read ED\'s data")
     parser.add_argument('selection',
-            help=f"Selected structure: p.e GE", choices
+            help="Selected structure: p.e GE", choices
             =names)
     parser.add_argument('selection_type',
-            help=f"Type of selection. How is the Mahalanobis distance applied (or if it is applied)",
+            help="Type of selection. How is the Mahalanobis distance applied (or if it is applied)",
             choices=sel_options )
 
-    args =  parser.parse_args()
+    args = parser.parse_args()
 
-    # -+-+-+-+-+-+-+-+-+-+-+- Main code +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-ºVy
+    # -+-+-+-+-+-+-+-+-+-+-+- Main code +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
 
     in_file = args.in_file
     selection = args.selection
@@ -136,6 +139,6 @@ if __name__ == "__main__":
     out_full = pre_dispar.get_full()
     print("number of stars, Full:", out_full.count())
     print("number of stars, QSHAG:", out_qshag.count())
-
-    out_full.export_hdf5(f'{selection}_full.hdf5', progress=True)
-    #out_qshag.export_hdf5(f'{selection}_qshag.hdf5', progress=True)
+    print("number of stars, bundle:", out_qshag[out_qshag['MG']<4].count())
+    #out_full.export_hdf5(f'{selection}_{selection_type}_full.hdf5', progress=True)
+    #out_qshag.export_hdf5(f'{selection}_{selection_type}_qshag.hdf5', progress=True)
