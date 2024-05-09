@@ -16,7 +16,7 @@ mother_out = 'GE_RDS/mother.rds'
 # Observed RDS 
 obs_out    = 'GE_RDS/obs_out.rds'
 # Bundle-window RDS 
-win_out    = 'GE_RDS/win_out.rds'
+win_out    = '/scratch1/truiz/cylindre_nov23/dirSFH/window_for_cylindre.rds'
 # CMD matrix RDS 
 mat_out    = 'GE_RDS/mat_out.rds'
 # CMD weights RDS 
