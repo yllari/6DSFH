@@ -16,7 +16,17 @@ class PreDisPar():
     def __init__(self, in_file, structure, selection_type, columns=None):
         self.data = vaex.open(in_file)
         self.sel_structure = structure
-        self.data = self.data[self.data[selection_type] == structure]
+        # -1 is assigned to Smooth.
+        # There are 28 clusters.
+        # 999999 is assigned to added stars without ruwe cut (just for original)
+        if structure == "Accreted":
+            # Not Smooth, only original (affects only original), in that order
+            self.data = self.data[(self.data[selection_type] != -1) & (self.data[selection_type] < 29)]
+        elif structure == "Accreted_noGE":
+            # Not Smooth, only original and not GE
+            self.data = self.data[(self.data[selection_type] != -1) & (self.data[selection_type] < 29) & (self.data[selection_type] != 0)]
+        else:
+            self.data = self.data[self.data[selection_type] == structure]
         self.sel_type = selection_type
 
         if columns != None:
@@ -80,9 +90,10 @@ if __name__ == "__main__":
         'HotDisk', 'Thamnos', 'Helmi',
         'Sequoia', 'ED1', 'LRL64',
         'ED2', 'ED4', 'ED3',
-        'Typhon', 'ED5', 'ED6'
+        'Typhon', 'ED5', 'ED6', 'Accreted', 'Accreted_noGE'
     ]
-    name_values = [-1,0,1,2,3,4,5,6,11,15,17,23,24, 26,28]
+    # Last two are special selections
+    name_values = [-1, 0, 1, 2, 3, 4, 5, 6, 11, 15, 17, 23, 24, 26, 28, 'Accreted', 'Accreted_noGE']
     lb_dc = dict(zip(names, name_values))
     # Reduced dictionary with mapping of labels to names
     #    "Smooth": -1,
@@ -92,7 +103,7 @@ if __name__ == "__main__":
     #    "Thamnos": 3,
     #    "Helmi": 4,
     #    "Sequoia": 5,
-    #    "LRL64": 7
+    #    "ED1": 6
 
     # Select label dictionary, mahalanobis distance applied to groups, clusters or none
     # -- cluster: Mahalanobis distance applied to individual clusters conforming structure
