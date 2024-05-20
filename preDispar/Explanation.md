@@ -20,5 +20,6 @@ Additionally
 - Cut in excess color for quality purposes
   '(0.001+0.039*(bp_rp) < log10(phot_bp_rp_excess_factor)) & (log10(phot_bp_rp_excess_factor) < 0.12 + 0.039*(bp_rp)'
 
-First subdataset will be given to disPar to generate the dispersed, completeness simulation of the mother CMD
+First subdataset will be given to disPar to generate the dispersed completeness simulation of the mother CMD.
+
 Second dataset will be the target CMD for dirSFH.
